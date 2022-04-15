@@ -43,6 +43,17 @@ sudo apt reinstall -y deepin-wallpapers
 sudo apt reinstall -y deepin-clone 
 sudo apt install -y grub-themes-deepin
 sudo apt install -y deepin-app-store 
+sudo apt install -y deepin-image-viewer
+sudo apt install -y deepin-camera
+sudo apt install -y deepin-deb-installer
+sudo apt install -y deepin-draw
+sudo apt install -y deepin-font-manager
+sudo apt install -y deepin-log-viewer
+sudo apt install -y deepin-mail
+sudo apt install -y deepin-movie
+sudo apt install -y deepin-music
+sudo apt install -y deepin-ocr
+sudo apt install -y deepin-voice-note
 echo "更新操作系统"
 sudo apt update
 sudo apt upgrade -y
@@ -51,6 +62,9 @@ echo "删除临时文件"
 sudo rm -rfv /usr/share/applications/livecd-installer.desktop
 sudo rm -rfv /usr/bin/livecd-installer
 sudo rm -rfv /usr/bin/setsudo.py
+sudo apt autopurge -y
+echo "更换默认壁纸"
+sudo killall deepin-desktop
 echo "提示："
 echo "    请自行修改壁纸以及关闭自动登录等功能并安装自己想要的应用"
 read -p "按回车键继续……"

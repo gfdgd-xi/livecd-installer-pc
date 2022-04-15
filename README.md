@@ -1,5 +1,15 @@
 # Introduce
 It's a little system installer on deepin community live cd, it can easyer to install this live cd on 
+## The Last Run Test Using Time
+It run on qemu-kvm. Local PC devices:  
+![image.png](https://storage.deepin.org/thread/202204151256315399_image.png)
+Virtual PC devices:  
+![image.png](https://storage.deepin.org/thread/202204151257251162_image.png)
+
+Using Time:  
+![image.png](https://storage.deepin.org/thread/202204151258133447_image.png)
+
+![image.png](https://storage.deepin.org/thread/202204151255115320_image.png)
 # About The Deepin Community Live CD Introduce
 It is made from Deepin 20.5 by gfdgd xi, it have some drivers to keep your computer run this deepin community live cd, The last version is 1.0.4.  
 ***Live CD defult password: 123456***  
