@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=第二部分部署
+Comment=第二部分部署的快捷方式
+Type=Application
+Exec=sudo bash /usr/bin/livecd-installer 
+Icon=deepin-clone
+Categories=System
+Terminal=true
+Keywords=

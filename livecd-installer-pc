@@ -1,0 +1,40 @@
+#!/bin/bash
+toilet Install!
+echo "使用前必读！"
+echo "    安装将会分为两部分，第二部分需要在进入临时安装的系统打开第二部分的部署程序，不会自动启动！"
+echo "    以及安装后的系统并不是 deepin 官方提供的系统，会有一些修改以及设置修改，可能与您的使用习惯不符，如果介意，请不要安装以及点击右上角的“×”关闭本程序！"
+echo "    以及第二部分的安装需要依赖网络，请保证电脑连接了网络！"
+read -p "按下回车进行下一步操作……"
+echo "挂载 Live CD"
+sudo umount /media/livecd/cdrom > /dev/null
+sudo mkdir /media/livecd/cdrom > /dev/null
+echo "光驱列表："
+echo /dev/sr*
+echo "请输入此 Live CD 所在的光驱或者此 Live CD ISO 文件所在目录"
+# 获取输入内容
+read -p "" input
+sudo mount $input /media/livecd/cdrom
+#sudo mount /media/livecd/cdrom
+echo "按下回车键打开磁盘分区工具 GParted 进行分区操作（如果不需要则打开后立即关闭即可）"
+read -p "按下回车进行下一步操作……"
+gparted
+echo "到时候询问需要 squashfs 的文件请输入：/media/livecd/cdrom/live/filesystem.squashfs"
+echo "提示：lub 的 Grub 修复可能会有问题，后面会有专门的程序修复引导"
+echo "注意：千万不要乱改挂载文件，否则下一步的部署将会失败！"
+read -p "按下回车进行下一步操作……"
+sudo lub -r
+echo "正在释放一些所需程序"
+sudo cp -rv /opt/livecd-installer-pc/setsudo.py /tmp/target/usr/bin/setsudo.py
+sudo cp -rv /opt/livecd-installer-pc/livecd-installer.sh /tmp/target/usr/bin/livecd-installer
+sudo cp -rv /opt/livecd-installer-pc/livecd-installer.desktop /tmp/target/usr/share/applications/livecd-installer.desktop
+sudo chmod 777 /tmp/target/usr/bin/setsudo.py
+sudo chmod 777 /tmp/target/usr/bin/livecd-installer
+echo "按下回车键打开 Pardus Boot Repair 以便修复系统引导"
+read -p "按下回车进行下一步操作……"
+pardus-boot-repair
+echo "取消挂载分区"
+sudo umount /tmp/target
+echo "第一部分部署完毕！按下回车键重启 Live CD，如果不想重启，直接关闭本终端即可！"
+echo "提示：如果想要进行下一步的部署，请登录您的用户然后在启动器找到“第二部分部署”并打开即可"
+read -p "按下回车重启进行下一步操作……"
+reboot
